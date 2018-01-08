@@ -1,0 +1,33 @@
+---
+
+TestItems:
+  Default:
+    bin-test:
+      cmd: "get info"
+      match: "version ([0-9\\.]+).*"
+      expected: "12.2"
+    ip-test:
+      cmd: "ip ssh version"
+      match: "ip ssh version ([0-9])"
+      expected: "2"
+    domain:
+      cmd: "lalala"
+      match: "ip domain-name (.*)"
+      expected: "net.local"
+  'Catalyst3750':
+    bin-test:
+      cmd: "show info"
+      match: "version (12).*"
+      expected: "12"
+
+
+TestGroups:
+  Basic:
+    - ip-test
+    - bin-test
+    - domain
+
+
+
+
+

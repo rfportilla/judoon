@@ -1,0 +1,705 @@
+---
+
+TestItems:
+  Default:
+    bin-test:
+      cmd: "get info"
+      match: "version ([0-9\\.]+).*"
+      expected: "12.2"
+    ip-test:
+      cmd: "ip ssh version"
+      match: "ip ssh version ([0-9])"
+      expected: "2"
+    domain:
+      cmd: "lalala"
+      match: "ip domain-name (.*)"
+      expected: "net.local"
+    Test_5:
+      match: "(version 15.2)"
+      expected: "L3-ASWW"
+    Test_6:
+      match: "(no service pad)"
+      expected: "udld aggressive"
+    Test_7:
+      match: "(service tcp-keepalives-in)"
+      expected: "crypto key gen rsa general-keys modulus 2048"
+    Test_8:
+      match: "(service password-encryption)"
+      expected: "service password-encryption"
+    Test_11:
+      match: "(logging buffered 20000)"
+      expected: "logging buffered 20000 debugging"
+    Test_12:
+      match: "(no logging console)"
+      expected: "no logging console"
+    Test_13:
+      match: "(logging monitor informational)"
+      expected: "logging monitor informational"
+    Test_17:
+      match: "(aaa new-model)"
+      expected: "aaa new-model"
+    Test_18:
+      match: "(aaa group server tacacs+ tacgroup)"
+      expected: "aaa group server tacacs+ tacgroup"
+    Test_22:
+      match: "(ip tacacs source-interface Loopback0)"
+      expected: "ip tacacs source-interface Loopback0"
+    Test_23:
+      match: "(aaa authentication login default group tacgroup local)"
+      expected: "aaa authentication login default group tacgroup local"
+    Test_24:
+      match: "(aaa authentication enable default group tacgroup enable)"
+      expected: "aaa authentication enable default group tacgroup enable"
+    Test_25:
+      match: "(aaa authorization exec default group tacgroup if-authenticated)"
+      expected: "aaa authorization exec default group tacgroup if-authenticated"
+    Test_26:
+      match: "(aaa authorization commands 15 default group tacgroup if-authenticated)"
+      expected: "aaa authorization commands 15 default group tacgroup if-authenticated"
+    Test_27:
+      match: "(aaa accounting exec default start-stop group tacgroup)"
+      expected: "aaa accounting exec default start-stop group tacgroup"
+    Test_28:
+      match: "(aaa accounting commands 15 default start-stop group tacgroup)"
+      expected: "aaa accounting commands 15 default start-stop group tacgroup"
+    Test_29:
+      match: "(aaa accounting system default start-stop group tacgroup)"
+      expected: "aaa accounting system default start-stop group tacgroup"
+    Test_30:
+      match: "(aaa session-id common)"
+      expected: "aaa session-id common"
+    Test_31:
+      match: "(ip routing)"
+      expected: "ip routing"
+    Test_32:
+      match: "(ip domain-name linkedin.com)"
+      expected: "ip domain-name linkedin.com"
+    Test_33:
+      match: "(ip dhcp snooping vlan 1-4094)"
+      expected: "ip dhcp snooping"
+    Test_34:
+      match: "(no ip dhcp snooping information option)"
+      expected: "no ip dhcp snooping information option"
+    Test_35:
+      match: "(ip dhcp snooping)"
+      expected: "ip dhcp snooping vlan 1-4094"
+    Test_41:
+      match: "(option 60 ascii \"ArubaAP\")"
+      expected: "option 60 ascii \"ArubaAP\""
+    Test_47:
+      match: "(option 60 ascii \"ArubaAP\")"
+      expected: "option 60 ascii \"ArubaAP\""
+    Test_53:
+      match: "(ipv6 unicast-routing)"
+      expected: "ipv6 unicast-routing"
+    Test_54:
+      match: "(vtp domain lmvc-2.1-asww01.gts)"
+      expected: "vtp version 2"
+    Test_55:
+      match: "(vtp mode transparent)"
+      expected: "vtp mode transparent"
+    Test_59:
+      match: "(errdisable recovery cause link-flap)"
+      expected: "errdisable recovery cause link-flap"
+    Test_60:
+      match: "(spanning-tree mode rapid-pvst)"
+      expected: "spanning-tree mode rapid-pvst"
+    Test_61:
+      match: "(spanning-tree loopguard default)"
+      expected: "spanning-tree loopguard default"
+    Test_62:
+      match: "(spanning-tree portfast default)"
+      expected: "spanning-tree portfast default"
+    Test_63:
+      match: "(spanning-tree portfast bpduguard default)"
+      expected: "spanning-tree portfast bpduguard default"
+    Test_64:
+      match: "(spanning-tree extend system-id)"
+      expected: "spanning-tree extend system-id"
+    Test_65:
+      match: "(spanning-tree vlan 1-4094 priority 4096)"
+      expected: "spanning-tree vlan 1-4094 priority 4096"
+    Test_66:
+      match: "(vlan 801)"
+      expected: "{% for id, name in config.vlans.items() %}"
+    Test_69:
+      match: "(vlan 802)"
+      expected: "{% endfor %}"
+    Test_70:
+      match: "(lldp run)"
+      expected: "lldp run"
+    Test_71:
+      match: "(policy-map NODROP)"
+      expected: "policy-map NODROP"
+    Test_72:
+      match: "(class class-default)"
+      expected: "class class-default"
+    Test_73:
+      match: "(bandwidth percent 100)"
+      expected: "bandwidth percent 100"
+    Test_74:
+      match: "(queue-buffers ratio 100)"
+      expected: "queue-buffers ratio 100"
+    Test_75:
+      match: "(interface Loopback0)"
+      expected: "interface Loopback0"
+    Test_79:
+      match: "(interface GigabitEthernet0/0)"
+      expected: "interface GigabitEthernet0/0"
+    Test_80:
+      match: "(vrf forwarding Mgmt-vrf)"
+      expected: "vrf forwarding Mgmt-vrf"
+    Test_81:
+      match: "(no ip address)"
+      expected: "no ip address"
+    Test_82:
+      match: "(negotiation auto)"
+      expected: "negotiation auto"
+    Test_83:
+      match: "(interface GigabitEthernet1/0/1)"
+      expected: "interface range GigabitEthernet1/0/1-48"
+    Test_85:
+      match: "(switchport access vlan 801)"
+      expected: "switchport access vlan 800"
+    Test_86:
+      match: "(switchport mode access)"
+      expected: "switchport mode access"
+    Test_87:
+      match: "(storm-control broadcast level 10.00)"
+      expected: "storm-control broadcast level 10.00"
+    Test_88:
+      match: "(storm-control action shutdown)"
+      expected: "storm-control action shutdown"
+    Test_89:
+      match: "(spanning-tree link-type point-to-point)"
+      expected: "spanning-tree link-type point-to-point"
+    Test_90:
+      match: "(service-policy output NODROP)"
+      expected: "service-policy output NODROP"
+    Test_91:
+      match: "(ip dhcp snooping limit rate 20)"
+      expected: "ip dhcp snooping limit rate 20"
+    Test_92:
+      match: "(interface GigabitEthernet1/1/1)"
+      expected: "interface GigabitEthernet1/1/1"
+    Test_93:
+      match: "(shutdown)"
+      expected: "shutdown"
+    Test_95:
+      match: "(interface GigabitEthernet1/1/2)"
+      expected: "interface GigabitEthernet1/1/2"
+    Test_96:
+      match: "(shutdown)"
+      expected: "shutdown"
+    Test_98:
+      match: "(interface GigabitEthernet1/1/3)"
+      expected: "interface GigabitEthernet1/1/3"
+    Test_99:
+      match: "(shutdown)"
+      expected: "shutdown"
+    Test_101:
+      match: "(interface GigabitEthernet1/1/4)"
+      expected: "interface GigabitEthernet1/1/4"
+    Test_102:
+      match: "(shutdown)"
+      expected: "shutdown"
+    Test_105:
+      match: "(no switchport)"
+      expected: "no switchport"
+    Test_107:
+      match: "(ip ospf network point-to-point)"
+      expected: "ip ospf network point-to-point"
+    Test_108:
+      match: "(ip ospf hello-interval 1)"
+      expected: "ip ospf hello-interval 1"
+    Test_109:
+      match: "(logging event trunk-status)"
+      expected: "logging event link-status"
+    Test_110:
+      match: "(ipv6 address 2620:119:5000:301::2/64)"
+      expected: "logging event trunk-status"
+    Test_112:
+      match: "(ospfv3 network point-to-point)"
+      expected: "ipv6 nd ra suppress all"
+    Test_113:
+      match: "(ospfv3 hello-interval 1)"
+      expected: "ospfv3 network point-to-point"
+    Test_114:
+      match: "(ospfv3 1 ipv6 area 12)"
+      expected: "ospfv3 hello-interval 1"
+    Test_118:
+      match: "(ip address 172.25.2.147 255.255.255.254)"
+      expected: "no switchport"
+    Test_120:
+      match: "(ip ospf hello-interval 1)"
+      expected: "ip ospf network point-to-point"
+    Test_121:
+      match: "(logging event trunk-status)"
+      expected: "ip ospf hello-interval 1"
+    Test_122:
+      match: "(ipv6 address 2620:119:5000:401::2/64)"
+      expected: "logging event link-status"
+    Test_123:
+      match: "(ipv6 nd ra suppress all)"
+      expected: "logging event trunk-status"
+    Test_125:
+      match: "(ospfv3 hello-interval 1)"
+      expected: "ipv6 nd ra suppress all"
+    Test_126:
+      match: "(ospfv3 1 ipv6 area 12)"
+      expected: "ospfv3 network point-to-point"
+    Test_130:
+      match: "(interface TenGigabitEthernet1/1/4)"
+      expected: "shutdown"
+    Test_131:
+      match: "(interface Vlan1)"
+      expected: "interface Vlan1"
+    Test_132:
+      match: "(no ip address)"
+      expected: "no ip address"
+    Test_133:
+      match: "(shutdown)"
+      expected: "shutdown"
+    Test_134:
+      match: "(interface Vlan801)"
+      expected: "interface Vlan8XX"
+    Test_135:
+      match: "(description core-wap-1F)"
+      expected: "description core-wap-Fl1"
+    Test_137:
+      match: "(no ip redirects)"
+      expected: "no ip redirects"
+    Test_138:
+      match: "(no ip unreachables)"
+      expected: "no ip unreachables"
+    Test_139:
+      match: "(no ip proxy-arp)"
+      expected: "no ip proxy-arp"
+    Test_140:
+      match: "(interface Vlan802)"
+      expected: "interface Vlan8XX"
+    Test_141:
+      match: "(description core-wap-2F)"
+      expected: "description core-wap-Fl2"
+    Test_143:
+      match: "(no ip redirects)"
+      expected: "no ip redirects"
+    Test_144:
+      match: "(no ip unreachables)"
+      expected: "no ip unreachables"
+    Test_145:
+      match: "(no ip proxy-arp)"
+      expected: "no ip proxy-arp"
+    Test_146:
+      match: "(router ospfv3 1)"
+      expected: "router ospfv3 1"
+    Test_148:
+      match: "(auto-cost reference-bandwidth 160000)"
+      expected: "auto-cost reference-bandwidth 160000"
+    Test_150:
+      match: "(address-family ipv6 unicast)"
+      expected: "address-family ipv6 unicast"
+    Test_151:
+      match: "(exit-address-family)"
+      expected: "exit-address-family"
+    Test_152:
+      match: "(router ospf 1)"
+      expected: "router ospf 1"
+    Test_154:
+      match: "(log-adjacency-changes detail)"
+      expected: "log-adjacency-changes detail"
+    Test_155:
+      match: "(auto-cost reference-bandwidth 160000)"
+      expected: "auto-cost reference-bandwidth 160000"
+    Test_157:
+      match: "(passive-interface Vlan801)"
+      expected: "passive-interface Vlan801"
+    Test_158:
+      match: "(passive-interface Vlan802)"
+      expected: "passive-interface Vlan802"
+    Test_164:
+      match: "(ip forward-protocol nd)"
+      expected: "no ip http server"
+    Test_165:
+      match: "(no ip http server)"
+      expected: "no ip http secure-server"
+    Test_166:
+      match: "(ip http authentication local)"
+      expected: "ip domain-name linkedin.com"
+    Test_167:
+      match: "(no ip http secure-server)"
+      expected: "ip domain lookup"
+    Test_168:
+      match: "(ip ssh time-out 30)"
+      expected: "ip ssh time-out 30"
+    Test_169:
+      match: "(ip ssh version 2)"
+      expected: "ip ssh version 2"
+    Test_170:
+      match: "(ip access-list standard ACL_VTY_GNS)"
+      expected: "no ip access-list standard ACL_VTY_GNS"
+    Test_171:
+      match: "(remark lca1-bak01.corp)"
+      expected: "ip access-list standard ACL_VTY_GNS"
+    Test_172:
+      match: "(permit 10.252.194.57)"
+      expected: " remark lca1-bak01.corp"
+    Test_173:
+      match: "(remark nsg7-gns01.linkedin.biz)"
+      expected: " permit 10.252.194.57"
+    Test_174:
+      match: "(permit 172.21.2.174)"
+      expected: " remark nsg7-gns01.linkedin.biz"
+    Test_175:
+      match: "(remark lca1-netops01.corp)"
+      expected: " permit 172.21.2.174"
+    Test_176:
+      match: "(permit 10.252.194.46)"
+      expected: " remark lca1-netops01.corp"
+    Test_177:
+      match: "(remark ela4-bak01.prod)"
+      expected: " permit 10.252.194.46"
+    Test_178:
+      match: "(permit 172.17.162.54)"
+      expected: " remark ela4-bak01.prod"
+    Test_179:
+      match: "(remark lva1-netops01.corp)"
+      expected: " permit 172.17.162.54"
+    Test_180:
+      match: "(permit 10.136.193.46)"
+      expected: " remark lva1-netops01.corp"
+    Test_181:
+      match: "(remark idb2-netops01.prod)"
+      expected: " permit 10.136.193.46"
+    Test_182:
+      match: "(permit 172.17.210.27)"
+      expected: " remark idb2-netops01.prod"
+    Test_183:
+      match: "(remark ela4-netops01.prod)"
+      expected: " permit 172.17.210.27"
+    Test_184:
+      match: "(permit 172.17.225.39)"
+      expected: " remark ela4-netops01.prod"
+    Test_185:
+      match: "(remark idb2-gns01.linkedin.biz)"
+      expected: " permit 172.17.225.39"
+    Test_186:
+      match: "(permit 172.18.84.110)"
+      expected: " remark idb2-gns01.linkedin.biz"
+    Test_187:
+      match: "(remark ela4-41445-netops01)"
+      expected: " permit 172.18.84.110"
+    Test_188:
+      match: "(permit 172.24.1.43)"
+      expected: " remark ela4-41445-netops01"
+    Test_189:
+      match: "(remark lva1-gns01.linkedin.biz)"
+      expected: " permit 172.24.1.43"
+    Test_190:
+      match: "(permit 172.29.32.47)"
+      expected: " remark lva1-gns01.linkedin.biz"
+    Test_191:
+      match: "(remark lca1-gns01.linkedin.biz)"
+      expected: " permit 172.29.32.47"
+    Test_192:
+      match: "(permit 172.29.84.23)"
+      expected: " remark lca1-gns01.linkedin.biz"
+    Test_194:
+      match: "(logging trap notifications)"
+      expected: "logging trap notifications"
+    Test_195:
+      match: "(logging facility local5)"
+      expected: "logging facility local5"
+    Test_196:
+      match: "(logging source-interface Loopback0)"
+      expected: "logging source-interface Loopback0"
+    Test_197:
+      match: "(logging host 10.252.194.48)"
+      expected: "logging host 10.252.194.48"
+    Test_198:
+      match: "(snmp-server community aupJ4sM9Du=L RO)"
+      expected: "snmp-server community aupJ4sM9Du=L RO"
+    Test_199:
+      match: "(snmp-server trap-source Loopback0)"
+      expected: "snmp-server trap-source Loopback0"
+    Test_201:
+      match: "(snmp-server contact netops-corp@linkedin.com)"
+      expected: "snmp-server contact netops-corp@linkedin.com"
+    Test_203:
+      match: "(banner login ^C)"
+      expected: "banner login ^"
+    Test_204:
+      match: "(UNAUTHORIZED ACCESS TO THIS DEVICE IS PROHIBITED.)"
+      expected: "UNAUTHORIZED ACCESS TO THIS DEVICE IS PROHIBITED."
+    Test_205:
+      match: "(This system is for the use of authorized users only. Individuals)"
+      expected: "This system is for the use of authorized users only. Individuals"
+    Test_206:
+      match: "(using this computer system without authority, or in excess of)"
+      expected: "using this computer system without authority, or in excess of"
+    Test_207:
+      match: "(their authority, are subject to having all of their activities)"
+      expected: "their authority, are subject to having all of their activities"
+    Test_208:
+      match: "(on this system monitored and recorded by system personnel.)"
+      expected: "on this system monitored and recorded by system personnel."
+    Test_209:
+      match: "(In the course of monitoring individuals improperly using this)"
+      expected: "In the course of monitoring individuals improperly using this"
+    Test_210:
+      match: "(system, or in the course of system maintenance, the activities)"
+      expected: "system, or in the course of system maintenance, the activities"
+    Test_211:
+      match: "(of authorized users may also be monitored.)"
+      expected: "of authorized users may also be monitored."
+    Test_212:
+      match: "(Anyone using this system expressly consents to such monitoring)"
+      expected: "Anyone using this system expressly consents to such monitoring"
+    Test_213:
+      match: "(and is advised that if such monitoring reveals possible)"
+      expected: "and is advised that if such monitoring reveals possible"
+    Test_214:
+      match: "(evidence of criminal activity, system personnel may provide the)"
+      expected: "evidence of criminal activity, system personnel may provide the"
+    Test_215:
+      match: "(evidence of such monitoring to law enforcement officials.)"
+      expected: "evidence of such monitoring to law enforcement officials."
+    Test_216:
+      match: "(^C)"
+      expected: "^"
+    Test_217:
+      match: "(line vty 0 4)"
+      expected: "line vty 0 15"
+    Test_218:
+      match: "(access-class ACL_VTY_GNS in)"
+      expected: "access-class ACL_VTY_GNS in"
+    Test_219:
+      match: "(exec-timeout 30 0)"
+      expected: "exec-timeout 30"
+    Test_220:
+      match: "(transport input ssh)"
+      expected: "transport input ssh"
+    Test_221:
+      match: "(line vty 5 15)"
+      expected: "login local"
+    Test_222:
+      match: "(ntp source Loopback0)"
+      expected: "ntp source Loopback0"
+    Test_223:
+      match: "(ntp server 10.252.194.22)"
+      expected: "ntp server 10.252.194.22"
+    Test_224:
+      match: "(ntp server 10.136.193.22)"
+      expected: "ntp server 10.136.193.22"
+    Test_225:
+      match: "(ntp server 10.252.194.23)"
+      expected: "ntp server 10.252.194.23"
+    Test_226:
+      match: "(ntp server 10.136.193.23)"
+      expected: "ntp server 10.136.193.23"
+    Test_227:
+      match: "(wsma agent exec)"
+      expected: "no wsma agent exec"
+    Test_228:
+      match: "(wsma agent config)"
+      expected: "no wsma agent config"
+    Test_229:
+      match: "(wsma agent filesys)"
+      expected: "no wsma agent filesys"
+    Test_230:
+      match: "(wsma agent notify)"
+      expected: "no wsma agent notify"
+    Test_231:
+      match: "(wsma profile listener httplistener)"
+      expected: "no wsma profile listener httplistener"
+    Test_232:
+      match: "(wsma profile listener httpslistener)"
+      expected: "no wsma profile listener httpslistener"
+    Test_233:
+      match: "(ap group default-group)"
+      expected: "no ap group default-group"
+  'Catalyst3750':
+    bin-test:
+      cmd: "show info"
+      match: "version (12).*"
+      expected: "12"
+
+
+TestGroups:
+  Basic:
+    - ip-test
+    - bin-test
+    - domain
+    - Test_5
+    - Test_6
+    - Test_7
+    - Test_8
+    - Test_11
+    - Test_12
+    - Test_13
+    - Test_17
+    - Test_18
+    - Test_22
+    - Test_23
+    - Test_24
+    - Test_25
+    - Test_26
+    - Test_27
+    - Test_28
+    - Test_29
+    - Test_30
+    - Test_31
+    - Test_32
+    - Test_33
+    - Test_34
+    - Test_35
+    - Test_41
+    - Test_47
+    - Test_53
+    - Test_54
+    - Test_55
+    - Test_59
+    - Test_60
+    - Test_61
+    - Test_62
+    - Test_63
+    - Test_64
+    - Test_65
+    - Test_66
+    - Test_69
+    - Test_70
+    - Test_71
+    - Test_72
+    - Test_73
+    - Test_74
+    - Test_75
+    - Test_79
+    - Test_80
+    - Test_81
+    - Test_82
+    - Test_83
+    - Test_85
+    - Test_86
+    - Test_87
+    - Test_88
+    - Test_89
+    - Test_90
+    - Test_91
+    - Test_92
+    - Test_93
+    - Test_95
+    - Test_96
+    - Test_98
+    - Test_99
+    - Test_101
+    - Test_102
+    - Test_105
+    - Test_107
+    - Test_108
+    - Test_109
+    - Test_110
+    - Test_112
+    - Test_113
+    - Test_114
+    - Test_118
+    - Test_120
+    - Test_121
+    - Test_122
+    - Test_123
+    - Test_125
+    - Test_126
+    - Test_130
+    - Test_131
+    - Test_132
+    - Test_133
+    - Test_134
+    - Test_135
+    - Test_137
+    - Test_138
+    - Test_139
+    - Test_140
+    - Test_141
+    - Test_143
+    - Test_144
+    - Test_145
+    - Test_146
+    - Test_148
+    - Test_150
+    - Test_151
+    - Test_152
+    - Test_154
+    - Test_155
+    - Test_157
+    - Test_158
+    - Test_164
+    - Test_165
+    - Test_166
+    - Test_167
+    - Test_168
+    - Test_169
+    - Test_170
+    - Test_171
+    - Test_172
+    - Test_173
+    - Test_174
+    - Test_175
+    - Test_176
+    - Test_177
+    - Test_178
+    - Test_179
+    - Test_180
+    - Test_181
+    - Test_182
+    - Test_183
+    - Test_184
+    - Test_185
+    - Test_186
+    - Test_187
+    - Test_188
+    - Test_189
+    - Test_190
+    - Test_191
+    - Test_192
+    - Test_194
+    - Test_195
+    - Test_196
+    - Test_197
+    - Test_198
+    - Test_199
+    - Test_201
+    - Test_203
+    - Test_204
+    - Test_205
+    - Test_206
+    - Test_207
+    - Test_208
+    - Test_209
+    - Test_210
+    - Test_211
+    - Test_212
+    - Test_213
+    - Test_214
+    - Test_215
+    - Test_216
+    - Test_217
+    - Test_218
+    - Test_219
+    - Test_220
+    - Test_221
+    - Test_222
+    - Test_223
+    - Test_224
+    - Test_225
+    - Test_226
+    - Test_227
+    - Test_228
+    - Test_229
+    - Test_230
+    - Test_231
+    - Test_232
+    - Test_233
+
+
+
+
+
