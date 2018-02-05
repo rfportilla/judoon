@@ -1,0 +1,134 @@
+---
+
+# This is a sample test configuration file.
+#
+# The configuration has 2 trees: TestItems and TestGroups.  TestItems are 
+# individual test definitions.  TestGroups are groupings of tests that can be 
+# referenced so that you can run many tests at once.
+#
+# **** TestItems ****
+# TestItems have categories of tests.  They are defined with dictionaries.
+# These dictionaries should be based on device type.  For instance,
+# TestItems["Catalyst3750"] has tests for that specific device.  You can list
+# multiple tests to use device specific tests.  As an example using,
+# ["Catalyst3750", "Catalyst3750_Mine"] would look for tests in Catalyst3750
+# first and Cataylst3750 second.  Audit will use the first matching test it
+# finds.  There is also a "Default" node.  This will always be checked last.  
+#
+# Test Categories have test definitions, which are also dictionaries.  They are
+# have the following properties:
+#   cmd:    If remotely connecting to device, this is the command to run to get
+#           the relevent configuration.
+#   type:   Optional; can be "config" or "text".  This effects how the
+#           configuration file is read.  When this is set to "config", audit
+#           treats the configuration as a Cisco-like configuration, 
+#           tab-delimited tree.  This requires the "match" property to be a
+#           list instead of a string.  When this is set to "text", audit does a
+#           simple line-by-line text search, like grep.  If not specified, this
+#           is set to "text" by default.
+#   match:  Required; if type is "text", this is a regex string with a single
+#           match group.  This match group is compared to the string in the
+#           expected property.  For instance, you could match on the ", " in
+#           "Hello, World" with regex "Hello(, )World".  The ", " is captured
+#           in the parantheses.  The expected property, in this case, would be
+#           ", ".  If type is "config", then match should be a list
+#           regex strings matching parent-child chain.  Only the last element
+#           needs a match group.  
+#   expected: This is the string to compare to what was matched from the match
+#           group in match property.
+#
+#
+# TestItems look like this:
+# 
+# TestItems:
+#   TestCategory:
+#     test-name:
+#       cmd: "Optional; the command to run remotely to get the configuration."
+#       type: "Optional; can be either config or text; text is default."
+#       match: "Required; Depends on type; text would like 'st(rin)g' whereas
+#              config would look like ['parent', 'child', 'st(rin)g']."
+#       expected: "This string matches on match group in match, ex. 'rin'."
+#
+#
+# **** TestGroups ****
+# TestGroups put tests together into functional groups that you want to run at
+# one time.  Tests can be referenced in multiple groups so that you can have 
+# quick and simple audits or more exhaustive ones.  The structure simply has
+# lists of tests that look like the following:
+#
+# TestGroups:
+#   TestGroup_Name:
+#     - Test1
+#     - Test2
+#
+#
+
+
+TestItems:
+  Default:
+    "if-mode-access (config, no command)":
+      type: "config"
+      match: ["interface GigabitEthernet1/0/1$","switchport mode (access)"]
+      expected: access
+    "if-uplinks-shutdown28 (config, sh run)":
+      type: "config"
+      cmd: "show running-config"
+      match: ["interface GigabitEthernet1/0/28","(shutdown)"]
+      expected: shutdown
+    "ver-test (bogus command)":
+      cmd: "get info"
+      match: "version ([0-9\\.]+).*"
+      expected: "12.2"
+    "ver-test2 (text, sh run)":
+      cmd: "show running-config"
+      match: "version ([0-9\\.]+).*"
+      expected: "12.2"
+    "ver-test3 (text, sh ver)":
+      cmd: "show version"
+      match: "Version ([0-9\\.]+).*"
+      expected: "12.2"
+    "ntp enabled (text, sh ntp)":
+      cmd: "show ntp"
+      match: "(216\\.229\\.4\\.69)"
+      expected: "216.229.4.69"
+  Catalyst3750:
+    "SSH Version":
+      cmd: "show running-config"
+      type: config
+      match: ["ip ssh version (2)"]
+      expected: "2"
+    "SSH Access":
+      cmd: "show running-config"
+      type: config
+      match: ["ip ssh version", "(transport input ssh)"]
+      expected: "transport input ssh"
+    "bin-test (Cat3750)":
+      cmd: "show version"
+      match: "\"flash:/([^\"]+)\""
+      expected: "c3750-ipbasek9-mz.122-52.SE.bin"
+  Catalyst3750_Mine:
+    "ver-test (bogus command)":
+      cmd: "sh run"
+      type: config
+      match: ["version ([0-9\\.]+).*"]
+      expected: "12.2"
+
+
+TestGroups:
+  Basic:
+    - if-mode-access (config, no command)
+    - if-uplinks-shutdown28 (config, sh run)
+    - ver-test (bogus command)
+    - ver-test2 (text, sh run)
+    - ver-test3 (text, sh ver)
+    - ntp enabled (text, sh ntp)
+    
+  BasicFile:
+    - if-mode-access (config, no command)
+    - if-uplinks-shutdown (config, sh run)
+    - ver-test2 (text, sh run)
+ 
+
+
+
+
